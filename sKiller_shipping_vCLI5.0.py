@@ -1,5 +1,5 @@
 import decimal
-from math import pi
+from math import pi, sqrt
 from os import system
 from datetime import datetime
 class Program:
@@ -24,13 +24,18 @@ class Program:
         elif command == "ql":
             print(self.Q_Look(userInput[1]))
         elif command == "qs":
-            self.Q_Save(userInput[1], userInput[2])
-            print("Question saved.\n")
+            if len(userInput) == 3:
+                self.Q_Save(userInput[1], userInput[2])
+                print("Question saved.\n")
+            else: print("ERROR: No answer or question provided.\n")
         elif command == "h":
             self.help()
         elif command == "qdel":
-            self.bwklist.pop(userInput[1])
-            print(f"{userInput[1]} deleted.\n")
+            if len(userInput) == 2:
+                self.bwklist.pop(userInput[1])
+                print(f"{userInput[1]} deleted.\n")
+            else: print("ERROR: No question provided.\n")
+        
         elif command == "+":
             
             try: queTest = decimal.Decimal(userInput[1])
@@ -257,6 +262,27 @@ class Program:
             if que != "":
                 print(finalAns)
             else: print(ans)
+
+        elif command == "cdi":
+            try: queTest = decimal.Decimal(userInput[1])
+            except decimal.DecimalException: que = userInput[1]
+            else: que = ""
+        
+            for i, _ in enumerate(userInput):
+                
+                try: num = decimal.Decimal(userInput[i])
+                except decimal.DecimalException: num = userInput[i] 
+                
+                if i == 0 or type(num) == str:
+                    pass
+                elif userInput[i] == "-s": qSave = 1
+                else: valList.append(decimal.Decimal(userInput[i]))
+            valList[1] = int(str(valList[1]))
+            ans, finalAns = self.FindC_DiameterFromArea(valList[0], valList[1], qNum=que, qS=qSave)
+            if que != "":
+                print(finalAns)
+            else: print(ans)
+                
     
     #Question lookup and save
     def Q_Save(self, qNum: str, ans) -> None:
@@ -373,8 +399,15 @@ class Program:
         if qS == 1: self.Q_Save(qNum, sectArea)
         if qNum == "": return sectArea, f"{qNum}: {sectArea}"
         else: return sectArea, f"{qNum}: {sectArea}"
+
+    def FindC_DiameterFromArea(self, area: decimal.Decimal, dp: int, qNum="", qS=0):
+        diameter = 2*sqrt(area/self.PI)
+        diameter = round(diameter, dp)
+        if qS == 1: self.Q_Save(qNum, diameter)
+        if qNum == "": return diameter, f"{qNum}: {diameter}"
+        else: return diameter, f"{qNum}: {diameter}"
     
-    
+
     #UTILITIES: Help and clear-screen
     def ClearScreen(self):
         system("cls")
