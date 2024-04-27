@@ -1,7 +1,19 @@
 # sKiller
 sKiller is a Sparx Homework Automation Program. It is currently on a command-line.
-I am hoping to make it a GUI and then soon make it to do your homework in 2 clicks.
-Anyone can commit.
+Right now I have stopped working on it, feel free to do what you like!
+
+# How to install
+
+**PLEASE DO NOT FORK THIS REPO UNLESS YOU NEED TO CHANGE SOMETHING**
+
+You can either download the python file directly and also install python.
+If you have git (not to be confused with github) and python installed
+then you can do:
+```python -m pip install git+https://github.com/Uz1i/sKiller.git@main```
+And to find the file you can do:
+```python -m pip show sKiller```
+And just navigate to the location shown.
+
 # Features/Commands
 
 Available commands:
@@ -25,4 +37,5 @@ These are all the commands you can use with sKiller.
 
 # Updates
 
-Join the discord: https://discord.gg/n4EwywyfMX
+I have gotten rid of the discord and feel free to maintain this project if you like!
+I may not be accepting merges because I'm not going to be on github a lot.
