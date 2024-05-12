@@ -1,5 +1,5 @@
 # sKiller
-sKiller is a Sparx Homework Automation Program. It is currently on a command-line.
+sKiller is a Sparx Homework Helper. It is currently on a command-line.
 Right now I have stopped working on it, feel free to do what you like!
 
 # How to install
