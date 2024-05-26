@@ -12,11 +12,49 @@ class Program:
     def ParseInput(self) -> None:
         userInput = self.cInput.split(" ", -1)
         command = userInput[0]
-        queTest = decimal.Decimal("0")
+        queTest = decimal.Decimal("0") #To check if question number is inputted or not
         qSave = 0
-        nonMax = 0
+        nonMax = 0 #Non-max variable for subtracting
         valList = []
         finalAns = ""
+
+        """
+        Structure to add a command:
+
+            -> First create a command as a function (i.e: def Fibonacci(que: str, args, qs: int): return args)
+            
+            elif command == "command":
+                try: queTest = decimal.Decimal(userInput)
+                except decimal.DecimalException: que = userInput[1] -> Checks for question number and then stores it in que if it is
+                else: que = ""
+
+                for i, _ in enumerate(userInput):
+
+                    try: num = decimal.Decimal(userInput[i])
+                    except decimal.DecimalException: num = userInput[i]
+
+                    if i == 0 or type(num) == str:
+                    pass
+                    elif userInput[i] == "-s": qSave = 1
+                    else: valList.append(decimal.Decimal(userInput[i]))
+
+                -> Parses input string for values
+
+                for i, _ in enumerate(valList):
+                    if len(valList) != 2:
+                        if i == len(valList):
+                            ans, finalAns = self.Function(que, args, qS=qSave)
+
+                        else: ans, _ = self.Function(que, args, qS=0)
+                    else: ans, finalAns = self.Function(que, args, qS=qSave)
+            if que != "":
+                print(finalAns)
+            else: print(ans)
+
+                
+        """
+        
+        
         if "-s" in userInput: qSave = 1
         
         if command == "cl": self.ClearScreen()
@@ -41,7 +79,6 @@ class Program:
             try: queTest = decimal.Decimal(userInput[1])
             except decimal.DecimalException: que = userInput[1]
             else: que = ""
-            
             for i, _ in enumerate(userInput):
                 
                 try: num = decimal.Decimal(userInput[i])
